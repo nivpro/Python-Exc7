@@ -1,0 +1,78 @@
+#########################################
+# Question 1 - do not delete this comment
+#########################################
+def range_dict(a, b):
+    d = {}
+    for i in range(a, b+1):
+        d[str(i)] = [i]
+    return d
+    # this will work as well
+    # return {str(i):[i] for i in range(a,b+1)}
+
+print(range_dict(-2, 1))
+
+
+#########################################
+# Question 2 - do not delete this comment
+#########################################
+def merge_dictionaries(d1, d2):
+    for key in d2:
+    	d1[key] = d2[key]
+    return d1
+    # or just use update:
+    # d1.update(d2)
+    # return d1
+
+print(merge_dictionaries({2:3}, {'4':5, 'a':[ ]}))
+
+
+#########################################
+# Question 3 - do not delete this comment
+#########################################
+def most_popular_digit(num):
+    num_as_str = str(num)
+    frequency_counter = {}
+    for digit in num_as_str:
+        frequency_counter[digit] = frequency_counter.get(digit, 0) + 1
+	
+    max_value = max(frequency_counter.values())
+    for digit in frequency_counter:
+        if frequency_counter[digit] == max_value:
+            return int(digit)
+	
+    # or just use ".get" as a comparation criterion	
+    # return int(max(frequency_counter, key=frequency_counter.get))
+
+print(most_popular_digit(234552222))
+
+
+#########################################
+# Question 4 - do not delete this comment
+#########################################
+def most_common_value_in_dict(d):
+    value2counts = {}
+    for k in d:
+    	value = d[k]
+    	value2counts[value] = value2counts.get(value, 0) + 1
+    	
+    return max(value2counts, key=value2counts.get)
+
+print(most_common_value_in_dict({'1':2, 'a':3, 'x':3, 4:3, 2:2, 1:'y'}))
+
+
+#############################################
+# BONUS Question - do not delete this comment
+#############################################
+def swap_students_courses(student2courses):
+    course2students = {}
+    for student in student2courses:
+        for course in student2courses[student]:
+            if course not in course2students:
+                course2students[course] = []
+            course2students[course].append(student)
+            #better use: course2students[course] = course2students.get(course, []) + [student]
+    return course2students
+
+print(swap_students_courses({"Yuval": ["Math", "Computer Science", "Statistics"], "Gal": ["Algebra", "Statistics", "Physics"], "Noam": ["Statistics", "Math", "Programming"]}))
+
+
